@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue"></script>
+    <style>
+        body {
+            overflow-x: hidden;
+            overflow-y: hidden;
+        }
+
+        thead {
+            background-color: aliceblue;
+        }
+
+        table {
+            width: -webkit-fill-available;
+        }
+
+        .tabs:not(:last-child) {
+            margin-bottom: 0;
+        }
+
+        td {
+            vertical-align: middle !important;
+        }
+        table {
+            background-color: grey;
+        }
+        td {
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+
+</body>
+<div id="app">
+    <!--div>
+    {{message}}
+    <ez-table bottom-marge=12>
+        <div>Hello</div>
+        <thead slot="thead">
+        <th>C1</th>
+        <th>C2</th>
+        <th>C3</th>
+        </thead>
+        <tbody slot="tbody">
+        <tr>
+            <td nowrap>item.e1</td>
+            <td>item.e2</td>
+            <td nowrap>item.e3</td>
+        </tr>
+        </tbody>
+    </ez-table>
+    </div-->
+</div>
+<script type="text/javascript" src="../dist/ez-table.js"></script>
+<script type="text/javascript">
+  Vue.use(ezTable);
+  new Vue({
+    el: '#app',
+    data: {
+      message: 'Hello Vue !',
+      list: []
+    },
+    mounted(){
+      for (i=0; i<20; i++){
+        this.list.push({
+          e1:i,
+          e2:'azaza',
+          e3:'434344'
+        })
+      }
+    },
+    template:''+
+  '  <ez-table bottom-marge=12>'+
+  '      <div>Hello</div>'+
+  '      <thead slot="thead">'+
+  '      <th>C1</th>'+
+  '      <th>C2</th>'+
+  '      <th>C3</th>'+
+  '      </thead>'+
+  '      <tbody slot="tbody">'+
+  '      <tr v-for="item in list">'+
+  '          <td nowrap>{{item.e1}}</td>'+
+  '          <td>{{item.e2}}</td>'+
+  '          <td nowrap>{{item.e3}}</td>'+
+  '      </tr>'+
+  '      </tbody>'+
+  '  </ez-table>'
+  })
+</script>
+</html>
