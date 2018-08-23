@@ -14,10 +14,11 @@
 
 <script type="text/babel">
   export default {
-    name:'ez-table',
+    name: 'ez-table',
     props: {
       bottomMarge: {
-        default: '10'}
+        default: '10'
+      }
     },
 
     data: () => ({
@@ -73,7 +74,7 @@
           if (parent === null) {
             return 0
           } else {
-            return elt.offsetTop  + getBottom(parent)
+            return elt.offsetTop + getBottom(parent)
           }
         }
 
@@ -92,14 +93,27 @@
         if (thead.children[0].elm.nodeName === 'TR') {
           thead = thead.children[0]
         }
+        let marge = 0
         thead.children.forEach((node, index) => {
           if (node.elm.nodeName === 'TH') {
-            node.elm.style.width = tbody.children[index].elm.offsetWidth + 'px'
-            lastElm = {elm: node.elm, index: index}
+            let style = window.getComputedStyle(node.elm, null)
+            if (parseFloat(style.getPropertyValue('width')) !== node.elm.offsetWidth) {
+              marge =
+                parseFloat(style.getPropertyValue('padding-left')) +
+                parseFloat(style.getPropertyValue('padding-right')) +
+                parseFloat(style.getPropertyValue('border-left')) +
+                parseFloat(style.getPropertyValue('border-right'))
+            }
+            node.elm.style.width = tbody.children[index].elm.offsetWidth - marge + 'px'
+            lastElm = {
+              elm: node.elm,
+              index: index,
+              padding: marge
+            }
           }
         })
         lastElm.elm.style.width = ''
-        lastElm.elm.style.maxWidth = thead.children[lastElm.index].elm.offsetWidth + 'px'
+        lastElm.elm.style.maxWidth = thead.children[lastElm.index].elm.offsetWidth - lastElm.marge + 'px'
       }
     }
   }

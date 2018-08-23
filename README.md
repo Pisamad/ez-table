@@ -2,6 +2,9 @@
 
 A Vue component that displays a table with a scrollable body and fixed header. 
 
+## Compatibility browser
+Chrome & Electron only
+
 ## Installation
 
 ```js
@@ -41,4 +44,4 @@ Once installed, it can be used in a template as simply as:
     </tbody>
 </ez-table>
 ```
-
+```bottomMarge``` is the value (px) under the table triggering the scrollbar. 
