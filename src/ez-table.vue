@@ -97,7 +97,7 @@
         thead.children.forEach((node, index) => {
           if (node.elm.nodeName === 'TH') {
             let style = window.getComputedStyle(node.elm, null)
-            if (parseFloat(style.getPropertyValue('width')) !== node.elm.offsetWidth) {
+            if (parseInt(parseFloat(style.getPropertyValue('width')) - node.elm.offsetWidth)!==0) {
               marge =
                 parseFloat(style.getPropertyValue('padding-left')) +
                 parseFloat(style.getPropertyValue('padding-right')) +
@@ -108,7 +108,7 @@
             lastElm = {
               elm: node.elm,
               index: index,
-              padding: marge
+              marge: marge
             }
           }
         })
