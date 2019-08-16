@@ -1,6 +1,6 @@
 {
   "name": "ez-table",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "A Vue.js component that displays a table",
   "main": "dist/ez-table.js",
   "scripts": {
