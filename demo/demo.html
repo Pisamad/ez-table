@@ -1,69 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <title>ez-table Demo</title>
     <script src="https://unpkg.com/vue"></script>
     <style>
-        body {
-            overflow-x: hidden;
-            overflow-y: hidden;
-        }
-
-        thead {
-            background-color: aliceblue;
-        }
-
-        table, th, td {
-            border: 1px solid black;
-        }
-
-        td{
-            padding-left: 10px;
-        }
-
-    </style>
-</head>
-<body>
-
-</body>
-<p>Reduce the vertical size of the browser to see the vertical scrollbar attached only to the table body.</p>
-
-<div id="app"></div>
-<script type="text/javascript" src="../dist/ez-table.js"></script>
-<script type="text/javascript">
-  Vue.use(ezTable);
-  new Vue({
-    el: '#app',
-    data: {
-      message: 'Hello Vue !',
-      list: []
-    },
-    mounted(){
-      for (i=0; i<20; i++){
-        this.list.push({
-          e1:i,
-          e2:'azaza',
-          e3:'434344'
-        })
+      body {
+        overflow-x: hidden;
+        overflow-y: hidden;
       }
-    },
-    template:''+
-  '  <ez-table bottom-marge=20>'+
-  '      <div>Hello</div>'+
-  '      <thead slot="thead">'+
-  '      <th class="c1">C1</th>'+
-  '      <th class="c2">C2</th>'+
-  '      <th class="c3">C3</th>'+
-  '      </thead>'+
-  '      <tbody slot="tbody">'+
-  '      <tr v-for="item in list">'+
-  '          <td class="c1" nowrap>{{item.e1}}</td>'+
-  '          <td class="c2">{{item.e2}}</td>'+
-  '          <td class="c3" nowrap>{{item.e3}}</td>'+
-  '      </tr>'+
-  '      </tbody>'+
-  '  </ez-table>'
-  })
-</script>
+
+      thead {
+        background-color: aliceblue;
+      }
+
+      table, th, td {
+        border: 1px solid black;
+      }
+
+      td{
+        padding-left: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <p>Reduce the vertical size of the browser to see the vertical scrollbar attached only to the table body.</p>
+
+    <div id="app"></div>
+
+    <script type="text/javascript" src="../dist/ez-table.js"></script>
+    <script type="text/javascript">
+      Vue.use(ezTable);
+      new Vue({
+        el: '#app',
+        data: {
+          message: 'Hello Vue !',
+          list: []
+        },
+        mounted:function(){
+          for (i=0; i<20; i++){
+            this.list.push({
+              e1:i,
+              e2:'Bla bla bla',
+              e3:'434344'
+            })
+          }
+        },
+        template:''+
+      '  <ez-table bottom-marge=20>'+
+      '      <div>Hello</div>'+
+      '      <thead slot="thead">'+
+      '      <th class="c1">C1</th>'+
+      '      <th class="c2">C2</th>'+
+      '      <th class="c3">C3</th>'+
+      '      </thead>'+
+      '      <tbody slot="tbody">'+
+      '      <tr v-for="item in list">'+
+      '          <td class="c1" nowrap>{{item.e1}}</td>'+
+      '          <td class="c2">{{item.e2}}</td>'+
+      '          <td class="c3" nowrap>{{item.e3}}</td>'+
+      '      </tr>'+
+      '      </tbody>'+
+      '  </ez-table>'
+      })
+    </script>
+  </body>
 </html>

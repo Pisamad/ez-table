@@ -1,18 +1,27 @@
 <template>
     <div ref="table" style="border-bottom: 2px solid gainsboro;margin-bottom: 5px;">
-        <table ref="thead" style="margin-bottom:0px;width:-webkit-fill-available">
+        <table class="fill" ref="thead" style="margin-bottom:0px">
             <slot name="thead"></slot>
         </table>
         <div ref="tbody" style="overflow-y:auto">
-            <table style="width:-webkit-fill-available">
+            <table class="fill">
                 <slot name="tbody"></slot>
             </table>
         </div>
     </div>
 </template>
 
+<style>
+.fill {
+  width: 100%;
+  width: fill-available;
+  width: -webkit-fill-available;
+  width: -moz-available;
+}
+</style>
 
 <script type="text/babel">
+  import throttle from 'lodash/throttle'
   export default {
     name: 'ez-table',
     props: {
@@ -38,8 +47,9 @@
       }
 
       // Add evt observer for resize and simulate it once
+      vm.resize = throttle(vm.refreshSize, 100)
       window.addEventListener('resize', vm.handleWindowResize, {passive: true})
-
+      // window.onResize = vm.handleWindowResize
       vm.refreshSize()
     },
 
@@ -64,7 +74,7 @@
         }
       },
 
-      refreshSize () {
+      refreshSize: throttle(function () {
         let vm = this
         let lastElm = {}
 
@@ -93,18 +103,21 @@
         if (thead.children[0].elm.nodeName === 'TR') {
           thead = thead.children[0]
         }
+
         let marge = 0
         thead.children.forEach((node, index) => {
           if (node.elm.nodeName === 'TH') {
             let style = window.getComputedStyle(node.elm, null)
-            if (parseInt(parseFloat(style.getPropertyValue('width')) - node.elm.offsetWidth)!==0) {
+            if (parseInt(parseFloat(style.getPropertyValue('width') || 0) - node.elm.offsetWidth) !== 0) {
               marge =
-                parseFloat(style.getPropertyValue('padding-left')) +
-                parseFloat(style.getPropertyValue('padding-right')) +
-                parseFloat(style.getPropertyValue('border-left')) +
-                parseFloat(style.getPropertyValue('border-right'))
+                parseFloat(style.getPropertyValue('padding-left') || 0) +
+                parseFloat(style.getPropertyValue('padding-right') || 0) +
+                parseFloat(style.getPropertyValue('border-left') || style.getPropertyValue('border-left-width') || 0) +
+                parseFloat(style.getPropertyValue('border-right') || style.getPropertyValue('border-right-width') || 0)
             }
-            node.elm.style.width = tbody.children[index].elm.offsetWidth - marge + 'px'
+            // node.elm.style.width = tbody.children[index].elm.offsetWidth - marge + 'px'
+            node.elm.style.setProperty('width', tbody.children[index].elm.offsetWidth - marge + 'px')
+
             lastElm = {
               elm: node.elm,
               index: index,
@@ -112,9 +125,9 @@
             }
           }
         })
-        lastElm.elm.style.width = ''
-        lastElm.elm.style.maxWidth = thead.children[lastElm.index].elm.offsetWidth - lastElm.marge + 'px'
-      }
+        lastElm.elm.style.setProperty('width', '')
+        lastElm.elm.style.setProperty('max-width', thead.children[lastElm.index].elm.offsetWidth - lastElm.marge + 'px')
+      }, 200)
     }
   }
 </script>

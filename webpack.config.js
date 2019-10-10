@@ -7,7 +7,7 @@ module.exports = {
     path: path.resolve(__dirname + '/dist/'),
     filename: 'ez-table.js',
     library: 'ezTable',
-    libraryTarget:'umd'
+    libraryTarget: 'umd'
   },
   module: {
     loaders: [
@@ -30,13 +30,13 @@ module.exports = {
   externals: {
   },
   plugins: [
-    new webpack.optimize.UglifyJsPlugin( {
-      minimize : true,
-      sourceMap : false,
+    new webpack.optimize.UglifyJsPlugin({
+      minimize: true,
+      sourceMap: false,
       mangle: true,
       compress: {
         warnings: false
       }
-    } )
+    })
   ]
 };
