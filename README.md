@@ -3,7 +3,7 @@
 A Vue component that displays a table with a scrollable body and fixed header. 
 
 ## Compatibility browser
-Chrome & Electron only
+All browsers
 
 ## Installation
 
@@ -11,9 +11,9 @@ Chrome & Electron only
 npm i --save-dev ez-table
 ```
 
-### Browser
+### Demo
 
-See demo.html file ...
+A demo is available in demo/demo.html
 
 ### Module
 
