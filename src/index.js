@@ -1,12 +1,12 @@
-import ezTable from './ez-table.vue';
+import ezTable from './ez-table.vue'
 
-module.exports = {
-  install(Vue) {
+export default {
+  install (Vue) {
     if (this.installed) {
       return
     }
 
     this.installed = true
-    Vue.component('ez-table', ezTable);
+    Vue.component('ez-table', ezTable)
   }
-};
+}

@@ -1,42 +1,36 @@
-const webpack = require('webpack');
-const path = require('path');
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const path = require('path')
 
 module.exports = {
-  entry: path.resolve(__dirname + '/src/index.js'),
+  mode: 'production',
+  entry: path.resolve(__dirname, 'src/index.js'),
   output: {
-    path: path.resolve(__dirname + '/dist/'),
+    path: path.resolve(__dirname, 'dist'),
     filename: 'ez-table.js',
     library: 'ezTable',
     libraryTarget: 'umd'
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
-        loader: 'babel',
+        use: 'babel-loader',
         include: __dirname,
         exclude: /node_modules/
       },
       {
         test: /\.vue$/,
-        loader: 'vue'
+        use: 'vue-loader'
       },
       {
         test: /\.css$/,
-        loader: 'style!less!css'
+        use: 'css-loader'
       }
     ]
   },
   externals: {
   },
   plugins: [
-    new webpack.optimize.UglifyJsPlugin({
-      minimize: true,
-      sourceMap: false,
-      mangle: true,
-      compress: {
-        warnings: false
-      }
-    })
+    new VueLoaderPlugin()
   ]
-};
+}
