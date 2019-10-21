@@ -23,7 +23,7 @@
 <script>
   import throttle from 'lodash/throttle'
   export default {
-    name: 'ez-table',
+    name: 'ezTable',
     props: {
       bottomMarge: {
         default: '10'
