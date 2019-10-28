@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <title>ez-table Demo</title>
     <script src="https://unpkg.com/vue"></script>
+    <!--script src="https://unpkg.com/ez-table"></script-->
+    <script src="../lib/ez-table.umd.js"></script>
+
     <style>
-      body {
-        overflow-x: hidden;
-        overflow-y: hidden;
+      body {n;
       }
 
       thead {
@@ -27,6 +28,9 @@
       td.c2 {
         width: 200px;
       }
+
+      .tablecontainer {
+      }
     </style>
   </head>
   <body>
@@ -35,14 +39,13 @@
 
     <div id="app"></div>
 
-    <script type="text/javascript" src="../dist/ez-table.js"></script>
     <script type="text/javascript">
-      Vue.use(ezTable);
       new Vue({
         el: '#app',
         data: {
           message: 'Hello Vue !',
-          list: []
+          list: [],
+          marge:20
         },
         mounted:function(){
           for (i=0; i<20; i++){
@@ -59,13 +62,18 @@
           },
           changec3: function () {
             this.list[0].e3 += 'and re bla bla'
+          },
+          changemarge: function () {
+            this.marge += 10
           }
         },
         template: '' +
           '<div id="container">' +
           '  <button @click="changec2">Add text in c2</button>' +
           '  <button @click="changec3">Add text in c3</button>' +
-          '  <ez-table bottom-marge=20>' +
+          '  <button @click="changemarge">Add 10px to bottom-marge</button>' +
+          '  <div class="tablecontainer">' +
+          '  <ez-table :bottom-marge="marge">' +
           '    <thead slot="thead">' +
           '      <th class="c1">C1</th>' +
           '      <th class="c2">C2</th>' +
@@ -79,6 +87,7 @@
           '      </tr>' +
           '    </tbody>' +
           '  </ez-table>' +
+          '  </div>' +
           '</div>' +
           ''
       })

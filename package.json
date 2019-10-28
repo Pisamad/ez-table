@@ -1,32 +1,58 @@
 {
   "name": "ez-table",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "A Vue.js component that displays a table",
-  "main": "dist/ez-table.js",
+  "main": "lib/ez-table.umd.min.js",
+  "files": [
+    "lib/ez-table.umd.min.js"
+  ],
   "scripts": {
-    "build": "rimraf ./dist && webpack --config ./webpack.config.js"
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build --target lib  --name ez-table --dest lib src/components/ezTable/index.js",
+    "lint": "vue-cli-service lint",
+    "pack": "npm pack"
   },
   "author": "Pisamad",
   "license": "UNLICENSED",
-  "dependencies": {
-    "lodash": "^4.17.15"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/Pisamad/ez-table"
   },
+  "dependencies": {
+    "core-js": "^3.3.4",
+    "vue": "^2.6.10"
+  },
   "devDependencies": {
-    "babel-core": "^6.10.4",
-    "babel-loader": "^6.2.4",
-    "babel-plugin-transform-runtime": "^6.9.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-runtime": "^6.9.2",
-    "rimraf": "^2.6.1",
-    "vue": "^2.2.1",
-    "vue-html-loader": "^1.2.3",
-    "vue-loader": "^11.1.4",
-    "vue-style-loader": "^2.0.3",
-    "vue-template-compiler": "^2.2.1",
-    "webpack": "1.13.1"
-  }
+    "@vue/cli-plugin-babel": "^4.0.5",
+    "@vue/cli-plugin-eslint": "^4.0.5",
+    "@vue/cli-service": "^4.0.5",
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.6.0",
+    "eslint-plugin-vue": "^5.2.3",
+    "vue-template-compiler": "^2.6.10",
+    "webpack-cli": "^3.3.9"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "rules": {},
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ]
 }

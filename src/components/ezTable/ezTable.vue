@@ -1,29 +1,29 @@
 <template>
-    <div ref="table" style="border-bottom: 2px solid gainsboro;margin-bottom: 5px;">
-        <table class="fill" ref="thead" style="margin-bottom:0px">
-            <slot name="thead"></slot>
-        </table>
-        <div ref="tbody" style="overflow-y:auto">
-            <table class="fill">
-                <slot name="tbody"></slot>
-            </table>
-        </div>
+  <div ref="table" style="border-bottom: 2px solid gainsboro;margin-bottom: 5px;">
+    <table class="fill" ref="thead" style="margin-bottom:0px">
+      <slot name="thead"></slot>
+    </table>
+    <div ref="tbody" style="overflow-y:auto">
+      <table class="fill">
+        <slot name="tbody"></slot>
+      </table>
     </div>
+  </div>
 </template>
 
 <style>
 .fill {
   width: 100%;
-  width: fill-available;
+  width: stretch;
   width: -webkit-fill-available;
   width: -moz-available;
 }
 </style>
 
-<script type="text/babel">
+<script>
   import throttle from 'lodash/throttle'
   export default {
-    name: 'ez-table',
+    name: 'ezTable',
     props: {
       bottomMarge: {
         default: '10'
@@ -112,8 +112,8 @@
               marge =
                 parseFloat(style.getPropertyValue('padding-left') || 0) +
                 parseFloat(style.getPropertyValue('padding-right') || 0) +
-                parseFloat(style.getPropertyValue('border-left') || style.getPropertyValue('border-left-width') || 0) +
-                parseFloat(style.getPropertyValue('border-right') || style.getPropertyValue('border-right-width') || 0)
+                parseFloat(style.getPropertyValue('border-left-width') || 0) +
+                parseFloat(style.getPropertyValue('border-right-width') || 0)
             }
             // node.elm.style.width = tbody.children[index].elm.offsetWidth - marge + 'px'
             node.elm.style.setProperty('width', tbody.children[index].elm.offsetWidth - marge + 'px')
