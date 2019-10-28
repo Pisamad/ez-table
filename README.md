@@ -13,8 +13,14 @@ npm i --save-dev ez-table
 
 ### Demo
 
-A demo is available in demo/demo.html
-https://jsfiddle.net/Pisamad/k2gqm0hj/
+<iframe
+     src="https://codesandbox.io/embed/eztable-sandbox-g1f5r?fontsize=14&module=%2Fsrc%2FApp.vue&view=preview"
+     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+     title="ezTable Sandbox"
+     allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
+     sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
+   >
+</iframe>
 
 ### Module
 
@@ -44,4 +50,6 @@ Once installed, it can be used in a template as simply as:
   </tbody>
 </ez-table>
 ```
+Columns header width will be synchronized with columns body width.
+
 ```bottomMarge``` is the value (px) under the table triggering the scrollbar. 

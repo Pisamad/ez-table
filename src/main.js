@@ -1,8 +1,7 @@
 /* eslint-disable */
 import Vue from 'vue'
 import App from './App.vue'
-import ezTable from '../lib/ez-table.umd.js'
-// const ezTable = require('../lib/ez-table.umd.js')
+import ezTable from './components/ezTable'
 
 console.log(ezTable)
 Vue.use(ezTable)

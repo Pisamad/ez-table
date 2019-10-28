@@ -14,7 +14,7 @@
 <style>
 .fill {
   width: 100%;
-  width: fill-available;
+  width: stretch;
   width: -webkit-fill-available;
   width: -moz-available;
 }
